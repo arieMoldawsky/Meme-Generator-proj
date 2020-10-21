@@ -1,6 +1,6 @@
 'use strict';
 
-var gImgs = [{ id: 1, url: './img/1.jpg', keywords: [] }];
+var gImgs = _getImgs();
 
 var gMeme = {
     selectedImgId: 1,
@@ -19,6 +19,10 @@ var gCanvas;
 var gCtx;
 
 
+function updatTextLine(txt) {
+    gMeme.lines[0].txt = txt;
+}
+
 function drawText(lineIdx) {
     let line = gMeme.lines[lineIdx];
     return line;
@@ -26,8 +30,8 @@ function drawText(lineIdx) {
 
 function updatSelectedImg(imgId) {
     gMeme.selectedImgId = imgId;
-    // var img = getImgById(imgId);
-    // return img;
+    var img = getImgById(imgId);
+    return img;
 }
 
 function getImgById(id) {
@@ -35,14 +39,29 @@ function getImgById(id) {
     return img;
 }
 
-function getCtx () {
+function getCtx() {
     return gCtx;
 }
-function getCanvas () {
+function getCanvas() {
     return gCanvas;
 }
 
 function setCanvas(canvas, ctx) {
     gCanvas = canvas;
     gCtx = ctx;
+}
+
+function _getImg(id) {
+    return {
+        id,
+        url: `./img/${id}.jpg`,
+        keywords: []
+    }
+}
+
+function _getImgs() {
+    gImgs = [];
+    gImgs.push(_getImg(1));
+    gImgs.push(_getImg(2));
+    return gImgs
 }

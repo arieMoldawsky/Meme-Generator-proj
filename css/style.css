@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: Lato, serif;
     margin: 0;
+    background-color: rgb(218, 236, 190);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,6 +42,15 @@ button {
 
 /* Components */
 
+/* Canvas Section */
+
+.canvas-section {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
 .canvas-container {
     padding: 15px;
     background-color: rgb(68, 67, 67);
@@ -52,6 +61,16 @@ canvas {
     background-color: gray;
 }
 
+/* Img Gallery */
+
 .gallery-container {
-    display: none;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    /* display: none; */
+}
+
+.gallery-container img {
+    cursor: pointer;
 }

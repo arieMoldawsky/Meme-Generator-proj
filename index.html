@@ -6,8 +6,19 @@
     <link rel="stylesheet" href="css/style.css">
     <title>AM-Meme-Generator</title>
 </head>
-<body>
+<body onload="onInit()">
 
-    <script src="js/main.js"></script>
+    <div class="canvas-container">
+        <canvas id="my-canvas" height="450" width="450" ></canvas>
+    </div>
+
+    <div class="gallery-container">
+        <img class="img1" src="img/1.jpg">
+    </div>
+
+    <script src="js/services/util-service.js"></script>
+    <script src="js/services/storage-service.js"></script>
+    <script src="js/services/meme-service.js"></script>
+    <script src="js/controller.js"></script>
 </body>
 </html>

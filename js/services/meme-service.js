@@ -11,13 +11,25 @@ var gMeme = {
             txt: 'Your text goes here',
             size: 30,
             align: 'center',
-            color: 'white'
+            color: 'white',
+            positionX: 225,
+            positionY: 50
         }]
 }
 
 var gCanvas;
 var gCtx;
 
+
+function updateTxtLocation(adder) {
+    gMeme.lines[0].positionY += adder;
+    // return gMeme.lines[0].size;
+}
+
+function updateFontSize(adder) {
+    gMeme.lines[0].size += adder;
+    // return gMeme.lines[0].size;
+}
 
 function updatTextLine(txt) {
     gMeme.lines[0].txt = txt;
@@ -37,6 +49,10 @@ function updatSelectedImg(imgId) {
 function getImgById(id) {
     var img = gImgs.find(img => img.id === id)
     return img;
+}
+
+function getMeme() {
+    return gMeme;
 }
 
 function getCtx() {

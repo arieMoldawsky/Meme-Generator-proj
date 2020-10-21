@@ -61,6 +61,16 @@ canvas {
     background-color: gray;
 }
 
+.btns-container {
+    display: grid;
+}
+
+.btns-container .font-size {
+    padding: 3px;
+    text-align: center;
+    width: 70px;
+}
+
 /* Img Gallery */
 
 .gallery-container {

@@ -19,7 +19,9 @@
             <form action="input">
                 <label for="text">Insert text: </label>
                 <input class="text-input" type="text" name="text" id="text" placeholder="Your Text Here..">
-                <button class="text-input-btn" onclick="onTextInput(event)">Add</button>
+                <button class="text-input-btn" onclick="onTextInput(event)">Add</button> <br>
+                <button class="font-size" onclick="onIncDecFont(event, 5)">Increase</button><button class="font-size" onclick="onIncDecFont(event, -5)">Decrease</button> <br>
+                <button class="move-meme-btn" onclick="onUpDownText(event, -10)">Up</button><button class="move-meme-btn" onclick="onUpDownText(event, 10)">Down</button>
             </form>
         </div>
     </section>

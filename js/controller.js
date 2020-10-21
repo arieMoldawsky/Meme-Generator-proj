@@ -3,45 +3,60 @@
 
 
 function onInit() {
+    onRenderCanvas()
+}
+
+
+function onSwitchLine(ev) {
+    ev.preventDefault();
+    switchLine();
+}
+
+function onRenderCanvas() {
     const canvas = document.querySelector('#my-canvas');
     const ctx = canvas.getContext('2d');
     const meme = getMeme();
+    const lines = meme.lines;
     setCanvas(canvas, ctx);
     onSelectImg(document.querySelector(`.img${meme.selectedImgId}`));
+    lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY))
 }
 
 function onUpDownText(ev, adder) {
-    onInit();
     ev.preventDefault();
     const meme = getMeme();
+    const lineIdx = meme.selectedLineIdx;
     adder = +adder;
     updateTxtLocation(adder);
-    const x = meme.lines[0].positionX;
-    const y = meme.lines[0].positionY;
-    onDrawText(0, x, y);
+    const x = meme.lines[lineIdx].positionX;
+    const y = meme.lines[lineIdx].positionY;
+    onDrawText(lineIdx, x, y);
+    onRenderCanvas();
 }
 function onIncDecFont(ev, adder) {
-    onInit();
     ev.preventDefault();
     const meme = getMeme();
-    const x = meme.lines[0].positionX;
-    const y = meme.lines[0].positionY;
+    const lineIdx = meme.selectedLineIdx;
+    const x = meme.lines[lineIdx].positionX;
+    const y = meme.lines[lineIdx].positionY;
     adder = +adder;
     updateFontSize(adder);
-    onDrawText(0, x, y);
+    onDrawText(lineIdx, x, y);
+    onRenderCanvas();
 }
 
 function onTextInput(ev) {
-    onInit();
     ev.preventDefault();
     const meme = getMeme();
-    const x = meme.lines[0].positionX;
-    const y = meme.lines[0].positionY;
+    const lineIdx = meme.selectedLineIdx;
+    const x = meme.lines[lineIdx].positionX;
+    const y = meme.lines[lineIdx].positionY;
     let elTxtInput = document.querySelector('.text-input');
     const text = elTxtInput.value;
     if (!text) alert('Please insert text');
     updatTextLine(text);
-    onDrawText(0, x, y);
+    onDrawText(lineIdx, x, y);
+    onRenderCanvas();
     elTxtInput.value = '';
 }
 

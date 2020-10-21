@@ -8,12 +8,21 @@ var gMeme = {
 
     lines: [
         {
-            txt: 'Your text goes here',
+            txt: '',
             size: 30,
             align: 'center',
             color: 'white',
             positionX: 225,
             positionY: 50
+        },
+
+        {
+            txt: '',
+            size: 30,
+            align: 'center',
+            color: 'white',
+            positionX: 225,
+            positionY: 400
         }]
 }
 
@@ -21,18 +30,28 @@ var gCanvas;
 var gCtx;
 
 
+function renderText() {
+
+}
+
+function switchLine() {
+    gMeme.selectedLineIdx +=1;
+    if (gMeme.selectedLineIdx > (gMeme.lines.length - 1)) gMeme.selectedLineIdx = 0;
+}
+
 function updateTxtLocation(adder) {
-    gMeme.lines[0].positionY += adder;
-    // return gMeme.lines[0].size;
+    const lineIdx = gMeme.selectedLineIdx;
+    gMeme.lines[lineIdx].positionY += adder;
 }
 
 function updateFontSize(adder) {
-    gMeme.lines[0].size += adder;
-    // return gMeme.lines[0].size;
+    const lineIdx = gMeme.selectedLineIdx;
+    gMeme.lines[lineIdx].size += adder;
 }
 
 function updatTextLine(txt) {
-    gMeme.lines[0].txt = txt;
+    const lineIdx = gMeme.selectedLineIdx;
+    gMeme.lines[lineIdx].txt = txt;
 }
 
 function drawText(lineIdx) {

@@ -10,26 +10,43 @@
 
 <body onload="onInit()">
 
-    <section class="canvas-section">
+    <header class="nav-container">
+        <nav class="nav-bar container">
+            <h2 class="logo">Am-Prod</h2>
+            <ul class="nav-list">
+                <li class="nav-btn">gallery</li>
+                <li class="nav-btn">meme</li>
+                <li class="nav-btn">about</li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="canvas-section container">
         <div class="canvas-container">
             <canvas id="my-canvas" height="450" width="450"></canvas>
         </div>
 
         <div class="btns-container">
             <form action="input">
-                <label for="text">Insert text: </label>
+                <!-- <label for="text">Insert text: </label> -->
                 <input class="text-input" type="text" name="text" id="text" placeholder="Your Text Here..">
                 <button class="text-input-btn" onclick="onTextInput(event)">Add</button> <br>
                 <button class="font-size" onclick="onIncDecFont(event, 5)">Increase</button><button class="font-size" onclick="onIncDecFont(event, -5)">Decrease</button> <br>
-                <button class="move-meme-btn" onclick="onUpDownText(event, -10)">Up</button><button class="move-meme-btn" onclick="onUpDownText(event, 10)">Down</button>
+                <button class="move-meme-btn" onclick="onUpDownText(event, -10)">Up</button><button class="move-meme-btn" onclick="onUpDownText(event, 10)">Down</button> <br>
+                <button class="switch-line-btn" onclick="onSwitchLine(event)">Switch Line</button>
             </form>
         </div>
     </section>
 
-    <div class="gallery-container">
-        <img class="1 img1" src="img/1.jpg" onclick="onSelectImg(this)">
-        <img class="2 img2" src="img/2.jpg" onclick="onSelectImg(this)">
+    <div class="gallery-container container">
+        <div class="gallery-item"><img class="1 img1" src="img/1.jpg" onclick="onSelectImg(this)"></div>
+        <div class="gallery-item"><img class="2 img2" src="img/2.jpg" onclick="onSelectImg(this)"></div>
     </div>
+
+    <footer>
+        <div class="footer-logo">Am-Prod</div>
+        <small class="copyrights">© 2020 Am-Prod.com - All Rights Reserved</small>
+    </footer>
 
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>

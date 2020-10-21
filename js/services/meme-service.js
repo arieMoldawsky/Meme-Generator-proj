@@ -30,9 +30,9 @@ var gCanvas;
 var gCtx;
 
 
-function renderText() {
+// function renderText() {
 
-}
+// }
 
 function switchLine() {
     gMeme.selectedLineIdx +=1;

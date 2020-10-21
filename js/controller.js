@@ -42,10 +42,12 @@ function resizeCanvas() {
         canvas.height = elContainer.offsetHeight;
         const meme = getMeme();
         const lines = meme.lines;
-        lines[0].positionX = 180;
-        lines[0].positionY = 50;
-        lines[1].positionX = 180;
-        lines[1].positionY = 310;
+        if (lines[0].positionX === 210 && lines[1].positionX === 210) {
+            lines[0].positionX = 175;
+            lines[0].positionY = 50;
+            lines[1].positionX = 175;
+            lines[1].positionY = 310;
+        }
         onRenderCanvas();
     }
 }

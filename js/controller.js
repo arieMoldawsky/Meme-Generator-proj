@@ -7,6 +7,7 @@ function onInit() {
 }
 
 
+
 function onSwitchLine(ev) {
     ev.preventDefault();
     switchLine();
@@ -20,6 +21,17 @@ function onRenderCanvas() {
     setCanvas(canvas, ctx);
     onSelectImg(document.querySelector(`.img${meme.selectedImgId}`), event);
     lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY))
+}
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-container');
+    var canvas = document.querySelector('#my-canvas');
+    console.log(elContainer.offsetWidth);
+    if (elContainer.offsetWidth < 400) {
+        canvas.width = elContainer.offsetWidth;
+        canvas.height = elContainer.offsetHeight;
+        onRenderCanvas();
+    }
 }
 
 function onUpDownText(ev, adder) {

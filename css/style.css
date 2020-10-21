@@ -91,6 +91,7 @@ button {
 
 .canvas-section {
     padding-top: 20px;
+    padding-bottom: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
@@ -102,7 +103,13 @@ button {
 .canvas-container {
     padding: 15px;
     background-color: rgb(68, 67, 67);
-    width: fit-content;
+    width: 450px;
+    border: 2.5px solid #dadada;
+    border-radius: 7px;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+
 }
 
 canvas {
@@ -115,6 +122,11 @@ canvas {
     background-color:rgb(68, 67, 67);
     padding: 20px;
     justify-items: center;
+    border: 2.5px solid #dadada;
+    border-radius: 7px;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
 }
 
 .btns-container form {
@@ -251,6 +263,9 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-logo {
@@ -264,7 +279,7 @@ footer {
 /* Helpers */
 
 .container {
-    width: 900px;
+    width: 850px;
 }
 
 .display-grid {
@@ -273,4 +288,43 @@ footer {
 
 .display-none {
     display: none !important;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 400px;
+    }
+
+    /* .nav-container {
+        width: 100vw;
+    } */
+
+    .canvas-section {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+        justify-items: center;
+    }
+
+    .canvas-container {
+        width: 360px;
+        height: 360px;
+        padding: 0;
+        /* border: 2.5px solid #dadada;
+        border-radius: 7px;
+        outline: none;
+        border-color: #9ecaed;
+        box-shadow: 0 0 10px #9ecaed; */
+    }
+
+    canvas {
+        border-radius: 10px;
+    }
+
+    footer {
+        position: unset;
+        bottom: unset;
+        width: unset;
+    }
+
 }

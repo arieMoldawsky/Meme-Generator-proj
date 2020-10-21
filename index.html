@@ -30,17 +30,25 @@
             <form action="input">
                 <!-- <label for="text">Insert text: </label> -->
                 <input class="text-input" type="text" name="text" id="text" placeholder="Your Text Here..">
-                <button class="text-input-btn" onclick="onTextInput(event)">Add</button> <br>
-                <button class="font-size" onclick="onIncDecFont(event, 5)">Increase</button><button class="font-size" onclick="onIncDecFont(event, -5)">Decrease</button> <br>
-                <button class="move-meme-btn" onclick="onUpDownText(event, -10)">Up</button><button class="move-meme-btn" onclick="onUpDownText(event, 10)">Down</button> <br>
-                <button class="switch-line-btn" onclick="onSwitchLine(event)">Switch Line</button>
+                <button class="text-input-btn form-btn" onclick="onTextInput(event)">Add</button>
+                <button class="font-size font-size-up form-btn"
+                    onclick="onIncDecFont(event, 5)">A+</button><button class="font-size font-size-down form-btn"
+                    onclick="onIncDecFont(event, -5)">A-</button>
+                <button class="move-meme-btn move-meme-up form-btn"
+                    onclick="onUpDownText(event, -10)"><img class="arrow-up-text"
+                    src="img/symbols/arrow-up.png"></button><button class="move-meme-btn move-meme-down form-btn"
+                    onclick="onUpDownText(event, 10)"><img class="arrow-down-text"
+                    src="img/symbols/arrow-down.png"></button>
+                <button class="switch-line-btn form-btn" onclick="onSwitchLine(event)"><img class="arrow-up"
+                        src="img/symbols/arrow-up.png"><img class="arrow-down"
+                        src="img/symbols/arrow-down.png"></button>
             </form>
         </div>
     </section>
 
     <div class="gallery-container container">
-        <div class="gallery-item"><img class="1 img1" src="img/1.jpg" onclick="onSelectImg(this)"></div>
-        <div class="gallery-item"><img class="2 img2" src="img/2.jpg" onclick="onSelectImg(this)"></div>
+        <div class="gallery-item"><img class="1 img1" src="img/1.jpg" onclick="onSelectImg(this, event)"></div>
+        <div class="gallery-item"><img class="2 img2" src="img/2.jpg" onclick="onSelectImg(this, event)"></div>
     </div>
 
     <footer>

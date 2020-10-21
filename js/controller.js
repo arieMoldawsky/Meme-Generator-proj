@@ -18,7 +18,7 @@ function onRenderCanvas() {
     const meme = getMeme();
     const lines = meme.lines;
     setCanvas(canvas, ctx);
-    onSelectImg(document.querySelector(`.img${meme.selectedImgId}`));
+    onSelectImg(document.querySelector(`.img${meme.selectedImgId}`), event);
     lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY))
 }
 
@@ -72,13 +72,20 @@ function onDrawText(lineIdx, x, y) {
     ctx.strokeText(line.txt, x, y);
 }
 
-function onSelectImg(image) {
-    var imageId = +image.classList[0];
-    var selectedImg = updatSelectedImg(imageId);
-    const canvas = getCanvas();
-    const ctx = getCtx();
-    var imgId = selectedImg.id;
-    var elImg = document.querySelector(`.img${imgId}`)
+function onSelectImg(image, ev) {
+    if (ev.type === 'click') {
+        var imageId = +image.classList[0];
+        var selectedImg = updatSelectedImg(imageId);
+        const canvas = getCanvas();
+        const ctx = getCtx();
+        var imgId = selectedImg.id;
+        var elImg = document.querySelector(`.img${imgId}`)
 
-    ctx.drawImage(elImg, 0, 0, canvas.width, canvas.height)
+        ctx.drawImage(elImg, 0, 0, canvas.width, canvas.height)
+
+        const elCanvas = document.querySelector('.canvas-section');
+        elCanvas.style.display = 'grid';
+        const elGallery = document.querySelector('.gallery-container')
+        elGallery.style.display = 'none';
+    }
 }

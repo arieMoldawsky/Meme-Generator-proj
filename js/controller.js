@@ -3,6 +3,7 @@
 
 
 function onInit() {
+    onRenderGallery()
     onRenderCanvas()
 }
 
@@ -23,13 +24,28 @@ function onRenderCanvas() {
     lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY))
 }
 
+function onRenderGallery() {
+    var elGallery = document.querySelector('.gallery-container');
+    var strHtml = '';
+    for (var i = 1; i <= 18; i++) {
+        strHtml += `<div class="gallery-item"><img class="${i} img${i}" src="img/${i}.jpg" onclick="onSelectImg(this, event)"></div>`
+    }
+    elGallery.innerHTML = strHtml;
+}
+
 function resizeCanvas() {
     var elContainer = document.querySelector('.canvas-container');
     var canvas = document.querySelector('#my-canvas');
-    console.log(elContainer.offsetWidth);
+    const meme = getMeme();
     if (elContainer.offsetWidth < 400) {
         canvas.width = elContainer.offsetWidth;
         canvas.height = elContainer.offsetHeight;
+        const meme = getMeme();
+        const lines = meme.lines;
+        lines[0].positionX = 180;
+        lines[0].positionY = 50;
+        lines[1].positionX = 180;
+        lines[1].positionY = 310;
         onRenderCanvas();
     }
 }

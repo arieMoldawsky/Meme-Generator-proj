@@ -12,7 +12,7 @@ var gMeme = {
             size: 30,
             align: 'center',
             color: 'white',
-            positionX: 225,
+            positionX: 210,
             positionY: 50
         },
 
@@ -21,7 +21,7 @@ var gMeme = {
             size: 30,
             align: 'center',
             color: 'white',
-            positionX: 225,
+            positionX: 210,
             positionY: 400
         }]
 }
@@ -96,7 +96,8 @@ function _getImg(id) {
 
 function _getImgs() {
     gImgs = [];
-    gImgs.push(_getImg(1));
-    gImgs.push(_getImg(2));
+    for (var i= 1; i <= 18; i++) {
+        gImgs.push(_getImg(i));
+    }
     return gImgs
 }

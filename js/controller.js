@@ -87,6 +87,36 @@ function resizeCanvas() {
     }
 }
 
+function onUploadImg(elForm, ev) {
+    ev.preventDefault();
+    const canvas = getCanvas();
+    document.getElementById('imgData').value = canvas.toDataURL("image/jpeg");
+
+    function onSuccess(uploadedImgUrl) {
+        uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        document.querySelector('.share-container').innerHTML = `
+        <a class="form-btn" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+           Share   
+        </a>`
+    }
+    doUploadImg(elForm, onSuccess);
+}
+
+function doUploadImg(elForm, onSuccess) {
+    var formData = new FormData(elForm);
+    fetch('http://ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(function (res) {
+        return res.text()
+    })
+    .then(onSuccess)
+    .catch(function (err) {
+        console.error(err)
+    })
+}
+
 function onDownloadCanvas(elLink) {
     var download = 'yes';
     onRenderCanvas(download);

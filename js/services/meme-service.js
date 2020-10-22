@@ -1,6 +1,8 @@
 'use strict';
 
 var gImgs = _getImgs();
+var gCanvas;
+var gCtx;
 
 var gMeme = {
     selectedImgId: 1,
@@ -37,14 +39,6 @@ var gMeme = {
             positionY: 210
         }]
 }
-
-var gCanvas;
-var gCtx;
-
-
-// function renderText() {
-
-// }
 
 function updateTextAlign(direction, screenSize) {
     const lineIdx = gMeme.selectedLineIdx;
@@ -89,7 +83,9 @@ function updateFontSize(adder) {
 
 function updatTextLine(txt) {
     const lineIdx = gMeme.selectedLineIdx;
-    gMeme.lines[lineIdx].txt += txt;
+    gMeme.lines[lineIdx].txt = txt;
+    // if (txt) gMeme.lines[lineIdx].txt += txt;
+    // else gMeme.lines[lineIdx].txt = txt;
     return gMeme.lines[lineIdx].txt;
 }
 

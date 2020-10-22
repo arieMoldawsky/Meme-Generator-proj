@@ -46,6 +46,13 @@ button {
 
 /* Components */
 
+.body-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Header */
 
 .nav-container {
@@ -98,12 +105,13 @@ button {
 .canvas-section {
     padding-top: 20px;
     padding-bottom: 20px;
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin-right: auto;
     margin-left: auto;
     display: none;
+    flex-grow: 1;
 }
 
 .canvas-container {
@@ -360,7 +368,6 @@ footer {
     font-size: 1.25rem;
 }
 
-
 /* Helpers */
 
 .container {
@@ -373,6 +380,12 @@ footer {
 
 .display-none {
     display: none !important;
+}
+
+.footer-to-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 @media screen and (max-width: 850px) {
@@ -454,7 +467,6 @@ footer {
         width: fit-content;
         grid-row: unset;
     }
-
 }
 
 @media screen and (max-width: 500px) {
@@ -462,22 +474,12 @@ footer {
         width: 400px;
     }
 
-    /* .nav-container {
-        width: 100vw;
-    } */
-
     .canvas-section {
         grid-template-columns: 1fr;
         grid-template-rows: 0.7fr 0.5fr;
         gap: 0px;
         justify-items: center;
     }
-
-    /* .canvas-container {
-        width: 350px;
-        height: 350px;
-        padding: 0;
-    } */
 
     canvas {
         border-radius: 10px;
@@ -535,7 +537,7 @@ footer {
     }
 
     .move-meme-up {
-        grid-column: 3 / 4;
+        grid-column: 2 / 3;
         grid-row: 5 / 6;
     }
     
@@ -559,5 +561,4 @@ footer {
     .gallery-container {
         grid-template-columns: 1fr 1fr;
     }
-
 }

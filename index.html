@@ -10,87 +10,90 @@
 
 <body onload="onInit()">
 
-    <header class="nav-container">
-        <nav class="nav-bar container">
-            <h2 class="logo">Meme-ltd</h2>
-            <ul class="nav-list">
-                <li class="nav-btn" onclick="onReset()">gallery</li>
-                <li class="nav-btn">meme</li>
-                <li class="nav-btn">about</li>
-            </ul>
-        </nav>
-    </header>
+    <div class="body-container">
 
-    <section class="canvas-section container" onclick="resizeCanvas()">
-        <div class="canvas-container">
-            <canvas id="my-canvas" height="420" width="420"></canvas>
+        <header class="nav-container">
+            <nav class="nav-bar container">
+                <h2 class="logo">Meme-ltd</h2>
+                <ul class="nav-list">
+                    <li class="nav-btn" onclick="onReset()">gallery</li>
+                    <li class="nav-btn">meme</li>
+                    <li class="nav-btn">about</li>
+                </ul>
+            </nav>
+        </header>
+    
+        <section class="canvas-section container" onclick="resizeCanvas()">
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="420" width="420"></canvas>
+            </div>
+    
+            <div class="btns-container">
+                <form action="input">
+                    <textarea class="text-input" cols='20' rows="3" name="text" id="text" placeholder="Your Text Here.."></textarea>
+                    <!-- <input oninput="onTextInput(event)" class="text-input" type="text" name="text" id="text" placeholder="Your Text Here.."></input> -->
+                    <button class="text-input-btn form-btn" onclick="onTextInput(event)">Add</button>
+                    <button class="text-delete-btn form-btn" onclick="onDeleteLine(event)"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g xmlns="http://www.w3.org/2000/svg"><path d="m424 64h-88v-16c0-26.467-21.533-48-48-48h-64c-26.467 0-48 21.533-48 48v16h-88c-22.056 0-40 17.944-40 40v56c0 8.836 7.164 16 16 16h8.744l13.823 290.283c1.221 25.636 22.281 45.717 47.945 45.717h242.976c25.665 0 46.725-20.081 47.945-45.717l13.823-290.283h8.744c8.836 0 16-7.164 16-16v-56c0-22.056-17.944-40-40-40zm-216-16c0-8.822 7.178-16 16-16h64c8.822 0 16 7.178 16 16v16h-96zm-128 56c0-4.411 3.589-8 8-8h336c4.411 0 8 3.589 8 8v40c-4.931 0-331.567 0-352 0zm313.469 360.761c-.407 8.545-7.427 15.239-15.981 15.239h-242.976c-8.555 0-15.575-6.694-15.981-15.239l-13.751-288.761h302.44z" fill="#fffafa" data-original="#000000"/><path d="m256 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" fill="#fffafa" data-original="#000000"/><path d="m336 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" fill="#fffafa" data-original="#000000"/><path d="m176 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" fill="#fffafa" data-original="#000000"/></g></g></svg></button>
+                    <div class="btns-sub-container">
+                        <button class="font-size font-size-up form-btn" onclick="onIncDecFont(event, 5)">A+</button><button
+                            class="font-size font-size-down form-btn" onclick="onIncDecFont(event, -5)">A-</button>
+                        <input type="color" name="color" id="color" class="form-btn color-set" oninput="onColorSet(value)">
+                        <select name="font-family" id="font-family" class="font-family" onclick="onFontSet(value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="monospace">Monospace</option>
+                        </select>
+                        <button class="align-left form-btn" onclick="onAlignTxt(event, 'left')"><svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 333 333" fill="snow">
+                                <path
+                                    d="M323 31.5H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm-93 83H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h220c5.5 0 10-4.5 10-10s-4.5-10-10-10zm93 84H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm-172 83H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h141c5.5 0 10-4.5 10-10s-4.5-10-10-10z" />
+                            </svg></button>
+                        <button class="align-center form-btn" onclick="onAlignTxt(event, 'center')"><svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 334.367 334.367"
+                                fill="snow">
+                                <path
+                                    d="M10.45 52.245h313.47a10.45 10.45 0 0 0 10.449-10.449 10.45 10.45 0 0 0-10.449-10.449H10.45A10.45 10.45 0 0 0 0 41.796a10.45 10.45 0 0 0 10.449 10.449zm47.02 62.695a10.45 10.45 0 0 0-10.449 10.449 10.45 10.45 0 0 0 10.449 10.449H276.9a10.45 10.45 0 0 0 10.449-10.449A10.45 10.45 0 0 0 276.9 114.94H57.47zm266.448 83.6H10.45A10.45 10.45 0 0 0 0 208.98a10.45 10.45 0 0 0 10.449 10.449h313.47a10.45 10.45 0 0 0 10.449-10.449 10.45 10.45 0 0 0-10.449-10.449zm-86.204 83.592H96.653a10.45 10.45 0 0 0-10.449 10.449 10.45 10.45 0 0 0 10.449 10.449h141.06a10.45 10.45 0 0 0 10.449-10.449 10.45 10.45 0 0 0-10.449-10.449z" />
+                            </svg></button>
+                        <button class="align-right form-btn" onclick="onAlignTxt(event, 'right')"><svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 333 333" fill="snow">
+                                <path
+                                    d="M323 31.5H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm0 83H104c-5.5 0-10 4.5-10 10s4.5 10 10 10h219c5.5 0 10-4.5 10-10s-4.5-10-10-10zm0 84H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm0 83H182c-5.5 0-10 4.5-10 10s4.5 10 10 10h141c5.5 0 10-4.5 10-10s-4.5-10-10-10z" />
+                            </svg></button>
+                    </div>
+                    <button class="move-meme-btn move-meme-up form-btn" onclick="onUpDownText(event, -10)"><svg
+                            xmlns="http://www.w3.org/2000/svg" xmlns:v="https://vecta.io/nano" width="512" height="512"
+                            viewBox="0 0 512.005 512.005">
+                            <path
+                                d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
+                                fill="snow" /></svg></button><button class="move-meme-btn move-meme-down form-btn"
+                        onclick="onUpDownText(event, 10)"><svg class="arrow-text-down" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 512.005 512.005">
+                            <path
+                                d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
+                                fill="snow" /></svg></button>
+                    <button class="switch-line-btn form-btn" onclick="onSwitchLine(event)"><svg class="arrow-up"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:v="https://vecta.io/nano" width="512" height="512"
+                            viewBox="0 0 512.005 512.005">
+                            <path
+                                d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
+                                fill="snow" /></svg><svg class="arrow-down" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 512.005 512.005">
+                            <path
+                                d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
+                                fill="snow" /></svg></button>
+                                <button class="form-btn download-btn"> <a href="#" onclick="onDownloadCanvas(this)" download="">Download</a></button>
+                </form>
+            </div>
+        </section>
+    
+        <div class="gallery-container container">
         </div>
-
-        <div class="btns-container">
-            <form action="input">
-                <textarea class="text-input" cols='20' rows="3" name="text" id="text" placeholder="Your Text Here.."></textarea>
-                <!-- <input oninput="onTextInput(event)" class="text-input" type="text" name="text" id="text" placeholder="Your Text Here.."></input> -->
-                <button class="text-input-btn form-btn" onclick="onTextInput(event)">Add</button>
-                <button class="text-delete-btn form-btn" onclick="onDeleteLine(event)"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g xmlns="http://www.w3.org/2000/svg"><path d="m424 64h-88v-16c0-26.467-21.533-48-48-48h-64c-26.467 0-48 21.533-48 48v16h-88c-22.056 0-40 17.944-40 40v56c0 8.836 7.164 16 16 16h8.744l13.823 290.283c1.221 25.636 22.281 45.717 47.945 45.717h242.976c25.665 0 46.725-20.081 47.945-45.717l13.823-290.283h8.744c8.836 0 16-7.164 16-16v-56c0-22.056-17.944-40-40-40zm-216-16c0-8.822 7.178-16 16-16h64c8.822 0 16 7.178 16 16v16h-96zm-128 56c0-4.411 3.589-8 8-8h336c4.411 0 8 3.589 8 8v40c-4.931 0-331.567 0-352 0zm313.469 360.761c-.407 8.545-7.427 15.239-15.981 15.239h-242.976c-8.555 0-15.575-6.694-15.981-15.239l-13.751-288.761h302.44z" fill="#fffafa" data-original="#000000"/><path d="m256 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" fill="#fffafa" data-original="#000000"/><path d="m336 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" fill="#fffafa" data-original="#000000"/><path d="m176 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" fill="#fffafa" data-original="#000000"/></g></g></svg></button>
-                <div class="btns-sub-container">
-                    <button class="font-size font-size-up form-btn" onclick="onIncDecFont(event, 5)">A+</button><button
-                        class="font-size font-size-down form-btn" onclick="onIncDecFont(event, -5)">A-</button>
-                    <input type="color" name="color" id="color" class="form-btn color-set" oninput="onColorSet(value)">
-                    <select name="font-family" id="font-family" class="font-family" onclick="onFontSet(value)">
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="monospace">Monospace</option>
-                    </select>
-                    <button class="align-left form-btn" onclick="onAlignTxt(event, 'left')"><svg xmlns="http://www.w3.org/2000/svg"
-                            xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 333 333" fill="snow">
-                            <path
-                                d="M323 31.5H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm-93 83H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h220c5.5 0 10-4.5 10-10s-4.5-10-10-10zm93 84H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm-172 83H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h141c5.5 0 10-4.5 10-10s-4.5-10-10-10z" />
-                        </svg></button>
-                    <button class="align-center form-btn" onclick="onAlignTxt(event, 'center')"><svg xmlns="http://www.w3.org/2000/svg"
-                            xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 334.367 334.367"
-                            fill="snow">
-                            <path
-                                d="M10.45 52.245h313.47a10.45 10.45 0 0 0 10.449-10.449 10.45 10.45 0 0 0-10.449-10.449H10.45A10.45 10.45 0 0 0 0 41.796a10.45 10.45 0 0 0 10.449 10.449zm47.02 62.695a10.45 10.45 0 0 0-10.449 10.449 10.45 10.45 0 0 0 10.449 10.449H276.9a10.45 10.45 0 0 0 10.449-10.449A10.45 10.45 0 0 0 276.9 114.94H57.47zm266.448 83.6H10.45A10.45 10.45 0 0 0 0 208.98a10.45 10.45 0 0 0 10.449 10.449h313.47a10.45 10.45 0 0 0 10.449-10.449 10.45 10.45 0 0 0-10.449-10.449zm-86.204 83.592H96.653a10.45 10.45 0 0 0-10.449 10.449 10.45 10.45 0 0 0 10.449 10.449h141.06a10.45 10.45 0 0 0 10.449-10.449 10.45 10.45 0 0 0-10.449-10.449z" />
-                        </svg></button>
-                    <button class="align-right form-btn" onclick="onAlignTxt(event, 'right')"><svg xmlns="http://www.w3.org/2000/svg"
-                            xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 333 333" fill="snow">
-                            <path
-                                d="M323 31.5H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm0 83H104c-5.5 0-10 4.5-10 10s4.5 10 10 10h219c5.5 0 10-4.5 10-10s-4.5-10-10-10zm0 84H10c-5.5 0-10 4.5-10 10s4.5 10 10 10h313c5.5 0 10-4.5 10-10s-4.5-10-10-10zm0 83H182c-5.5 0-10 4.5-10 10s4.5 10 10 10h141c5.5 0 10-4.5 10-10s-4.5-10-10-10z" />
-                        </svg></button>
-                </div>
-                <button class="move-meme-btn move-meme-up form-btn" onclick="onUpDownText(event, -10)"><svg
-                        xmlns="http://www.w3.org/2000/svg" xmlns:v="https://vecta.io/nano" width="512" height="512"
-                        viewBox="0 0 512.005 512.005">
-                        <path
-                            d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
-                            fill="snow" /></svg></button><button class="move-meme-btn move-meme-down form-btn"
-                    onclick="onUpDownText(event, 10)"><svg class="arrow-text-down" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 512.005 512.005">
-                        <path
-                            d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
-                            fill="snow" /></svg></button>
-                <button class="switch-line-btn form-btn" onclick="onSwitchLine(event)"><svg class="arrow-up"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:v="https://vecta.io/nano" width="512" height="512"
-                        viewBox="0 0 512.005 512.005">
-                        <path
-                            d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
-                            fill="snow" /></svg><svg class="arrow-down" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:v="https://vecta.io/nano" width="512" height="512" viewBox="0 0 512.005 512.005">
-                        <path
-                            d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
-                            fill="snow" /></svg></button>
-                            <button class="form-btn download-btn"> <a href="#" onclick="onDownloadCanvas(this)" download="">Download</a></button>
-            </form>
-        </div>
-    </section>
-
-    <div class="gallery-container container">
+    
+        <footer>
+            <div class="footer-logo">Meme-ltd</div>
+            <small class="copyrights">© 2020 Am-Prod.com - All Rights Reserved</small>
+        </footer>
     </div>
-
-    <footer>
-        <div class="footer-logo">Meme-ltd</div>
-        <small class="copyrights">© 2020 Am-Prod.com - All Rights Reserved</small>
-    </footer>
 
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>

@@ -8,12 +8,6 @@ function onInit() {
 }
 
 function onReset() {
-    // const elCanvas = document.querySelector('.canvas-section');
-    // elCanvas.style.display = 'none';
-    // // elCanvas.classList.add('display-none');
-    // const elGallery = document.querySelector('.gallery-container');
-    // elGallery.style.display = 'grid';
-    // // elGallery.classList.add('display-grid');
     location.reload();
 }
 
@@ -26,7 +20,7 @@ function onSwitchLine(ev) {
 function onRenderCanvas(download) {
     const canvas = document.querySelector('#my-canvas');
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    // ctx.clearRect(0, 0, canvas.width, canvas.height)
     const meme = getMeme();
     const lines = meme.lines;
     setCanvas(canvas, ctx);
@@ -172,8 +166,6 @@ function drawRect(x, y, sizeX, sizeY) {
     ctx.rect(x, y, sizeX, sizeY);
     ctx.strokeStyle = 'black';
     ctx.stroke();
-    // ctx.fillStyle = 'orange'
-    // ctx.fillRect(x, y, 150, 150)
 }
 
 function onDrawText(lineIdx, x, y) {
@@ -203,5 +195,9 @@ function onSelectImg(image, ev) {
         elCanvas.style.display = 'grid';
         const elGallery = document.querySelector('.gallery-container')
         elGallery.style.display = 'none';
+        if (window.innerWidth > 501) {
+            const footer = document.querySelector('footer');
+            footer.classList.add('footer-to-bottom');
+        }
     }
 }

@@ -74,6 +74,7 @@ function updateColorSet(color) {
 function switchLine() {
     gMeme.selectedLineIdx += 1;
     if (gMeme.selectedLineIdx > (gMeme.lines.length - 1)) gMeme.selectedLineIdx = 0;
+    return gMeme.selectedLineIdx;
 }
 
 function updateTxtLocation(adder) {
@@ -88,7 +89,8 @@ function updateFontSize(adder) {
 
 function updatTextLine(txt) {
     const lineIdx = gMeme.selectedLineIdx;
-    gMeme.lines[lineIdx].txt = txt;
+    gMeme.lines[lineIdx].txt += txt;
+    return gMeme.lines[lineIdx].txt;
 }
 
 function drawText(lineIdx) {

@@ -20,16 +20,23 @@ function onReset() {
 function onSwitchLine(ev) {
     ev.preventDefault();
     switchLine();
+    onRenderCanvas();
 }
 
-function onRenderCanvas() {
+function onRenderCanvas(download) {
     const canvas = document.querySelector('#my-canvas');
     const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     const meme = getMeme();
     const lines = meme.lines;
     setCanvas(canvas, ctx);
     onSelectImg(document.querySelector(`.img${meme.selectedImgId}`), event);
-    lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY))
+    var lineIdx = meme.selectedLineIdx;
+    ctx.font = `${lines[lineIdx].size}px ${lines[lineIdx].font}`;
+    var lineSize = ctx.measureText(`${lines[lineIdx].txt}`);
+    lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY));
+    if (download) return;
+    drawRect(lines[lineIdx].positionX - ((lineSize.width + 20) / 2), lines[lineIdx].positionY - 40, lineSize.width + 20, 50);
 }
 
 function onRenderGallery() {
@@ -63,6 +70,8 @@ function resizeCanvas() {
 }
 
 function onDownloadCanvas(elLink) {
+    var download = 'yes';
+    onRenderCanvas(download);
     const canvas = getCanvas();
     const data = canvas.toDataURL("image/jpg");
     console.log(data);
@@ -99,7 +108,7 @@ function onColorSet(color) {
     updateColorSet(color);
     const x = meme.lines[lineIdx].positionX;
     const y = meme.lines[lineIdx].positionY;
-    onDrawText(lineIdx, x, y);
+    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 
@@ -111,7 +120,7 @@ function onUpDownText(ev, adder) {
     updateTxtLocation(adder);
     const x = meme.lines[lineIdx].positionX;
     const y = meme.lines[lineIdx].positionY;
-    onDrawText(lineIdx, x, y);
+    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 function onIncDecFont(ev, adder) {
@@ -122,19 +131,19 @@ function onIncDecFont(ev, adder) {
     const y = meme.lines[lineIdx].positionY;
     adder = +adder;
     updateFontSize(adder);
-    onDrawText(lineIdx, x, y);
+    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 
 function onDeleteLine(ev) {
-    ev.preventDefault();
+    if (ev) ev.preventDefault();
     const meme = getMeme();
     const lineIdx = meme.selectedLineIdx;
     const x = meme.lines[lineIdx].positionX;
     const y = meme.lines[lineIdx].positionY;
     const text = '';
     updatTextLine(text);
-    onDrawText(lineIdx, x, y);
+    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 
@@ -151,9 +160,20 @@ function onTextInput(ev) {
         return
     }
     updatTextLine(text);
-    onDrawText(lineIdx, x, y);
-    onRenderCanvas();
+    // onDrawText(lineIdx, x, y);
+    // meme.lines[lineIdx].txt = elTxtInput.value;
     elTxtInput.value = '';
+    onRenderCanvas();
+}
+
+function drawRect(x, y, sizeX, sizeY) {
+    const ctx = getCtx();
+    ctx.beginPath();
+    ctx.rect(x, y, sizeX, sizeY);
+    ctx.strokeStyle = 'black';
+    ctx.stroke();
+    // ctx.fillStyle = 'orange'
+    // ctx.fillRect(x, y, 150, 150)
 }
 
 function onDrawText(lineIdx, x, y) {

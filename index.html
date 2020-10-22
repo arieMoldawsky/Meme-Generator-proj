@@ -29,7 +29,7 @@
             </div>
 
             <div class="btns-container">
-                <form action="input">
+                <form action="input" class="btns-form">
                     <textarea class="text-input" cols='20' rows="3" name="text" id="text"
                         placeholder="Your Text Here.."></textarea>
                     <!-- <input oninput="onTextInput(event)" class="text-input" type="text" name="text" id="text" placeholder="Your Text Here.."></input> -->
@@ -110,12 +110,12 @@
                                 fill="snow" /></svg></button>
                     <button class="form-btn download-btn"> <a href="#" onclick="onDownloadCanvas(this)"
                             download="">Download</a></button>
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
-                        <input name="img" id="imgData" type="hidden" />
-                        <button class="form-btn facebook-btn" type="submit">Publish</button>
-                        <div class="share-container"></div>
-                    </form>
-                </form>
+                        </form>
+                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="form-btn facebook-btn" type="submit">Publish</button>
+                            <div class="share-container"></div>
+                        </form>
             </div>
         </section>
 

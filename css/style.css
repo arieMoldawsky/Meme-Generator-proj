@@ -144,7 +144,7 @@ canvas {
     box-shadow: 0 0 10px #9ecaed;
 }
 
-.btns-container form {
+.btns-form {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -295,9 +295,9 @@ canvas {
 }
 
 .download-btn {
-    padding: 10px;
+    padding: 10px 50px;
     width: fit-content;
-    grid-column: 1 / 4;
+    grid-column: 2 / 5;
     grid-row: 6 / 7;
     /* background-image: linear-gradient(-38deg, #aaaaaa 0%, #a4a7a7 100%); */
     background-color: red;
@@ -307,11 +307,23 @@ canvas {
 .facebook-btn {
     padding: 10px;
     width: fit-content;
-    grid-column: 4 / 6;
-    grid-row: 6 / 7;
+    /* grid-column: 4 / 6;
+    grid-row: 6 / 7; */
     /* background-image: linear-gradient(-38deg, #aaaaaa 0%, #a4a7a7 100%); */
     background-color: rgb(25, 0, 255);
     text-shadow: -2px 3px 2px rgba(150, 150, 150, 0.7);
+}
+
+.share-btn {
+    padding: 10px;
+    width: 100px;
+    color: snow;
+    background-color: rgb(25, 0, 255);
+    text-shadow: -2px 3px 2px rgba(150, 150, 150, 0.7);
+}
+
+.share-btn a {
+    color: snow;
 }
 
 .download-btn a {
@@ -406,7 +418,12 @@ footer {
 
     .canvas-section {
         justify-items: center;
-        gap: 15;
+        gap: 10px;
+    }
+
+    .btns-form {
+        row-gap: 15px;
+        margin-bottom: 10px;
     }
 
     .canvas-container {
@@ -474,17 +491,25 @@ footer {
     }
 
     .download-btn {
-        padding: 7px;
+        padding: 7px 80px;
         font-size: 1rem;
         width: fit-content;
+        grid-column: 1 / 6;
         grid-row: unset;
     }
+
     .facebook-btn {
         padding: 7px;
         font-size: 1rem;
         width: fit-content;
         grid-column: 4 / 5;
         grid-row: unset;
+    }
+
+    .share-btn {
+        padding: 7px;
+        font-size: 1rem;
+        width: 80px;
     }
 }
 
@@ -566,8 +591,9 @@ footer {
     }
 
     .download-btn {
-        padding: 10px;
+        padding: 10px 70px;
         width: fit-content;
+        grid-column: 2 / 5;
         grid-row: 6 / 7;
     }
 
@@ -575,6 +601,12 @@ footer {
         padding: 10px;
         width: fit-content;
         grid-row: 6 / 7;
+    }
+
+    .share-btn {
+        padding: 10px;
+        font-size: 1rem;
+        width: 80px;
     }
 
     footer {

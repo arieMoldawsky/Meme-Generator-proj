@@ -1,7 +1,6 @@
 'use strict';
 
 
-
 function onInit() {
     onRenderGallery()
     onRenderCanvas()
@@ -15,6 +14,31 @@ function onSwitchLine(ev) {
     ev.preventDefault();
     switchLine();
     onRenderCanvas();
+}
+
+function canvasClicked(ev) {
+    const ctx = getCtx();
+    const meme = getMeme();
+    const lines = meme.lines;
+    const { offsetX, offsetY } = ev;
+
+    var lineIdx = meme.selectedLineIdx;
+    ctx.font = `${lines[lineIdx].size}px ${lines[lineIdx].font}`;
+    var lineSize = ctx.measureText(`${lines[lineIdx].txt}`);
+    let clickedLineIdx;
+    if (!lines[lineIdx].txt) {
+        clickedLineIdx = lines.findIndex(line => {
+            return ((offsetX > line.positionX - 100) && (offsetX < line.positionX + 100)) && ((offsetY < line.positionY) && (offsetY > line.positionY - 40))
+        })
+    } else {
+        clickedLineIdx = lines.findIndex(line => {
+            return ((offsetX > line.positionX - lineSize.width) && (offsetX < line.positionX + lineSize.width)) && ((offsetY < line.positionY) && (offsetY > line.positionY - 40))
+        })
+    }
+    if (clickedLineIdx !== -1) {
+        meme.selectedLineIdx = clickedLineIdx;
+        onRenderCanvas();
+    }
 }
 
 function onRenderCanvas(download) {

@@ -14,7 +14,7 @@
 
         <header class="nav-container">
             <nav class="nav-bar container">
-                <h2 class="logo">Meme-ltd</h2>
+                <h2 class="logo" onclick="onReset()">Meme-ltd</h2>
                 <ul class="nav-list">
                     <li class="nav-btn" onclick="onReset()">gallery</li>
                     <li class="nav-btn">meme</li>
@@ -25,7 +25,7 @@
     
         <section class="canvas-section container" onclick="resizeCanvas()">
             <div class="canvas-container">
-                <canvas id="my-canvas" height="420" width="420"></canvas>
+                <canvas onclick="canvasClicked(event)" id="my-canvas" height="420" width="420"></canvas>
             </div>
     
             <div class="btns-container">

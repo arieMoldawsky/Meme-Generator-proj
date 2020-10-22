@@ -97,6 +97,7 @@ button {
 .logo {
     text-transform: uppercase;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 

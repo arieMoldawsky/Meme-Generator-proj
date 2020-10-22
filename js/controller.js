@@ -7,7 +7,15 @@ function onInit() {
     onRenderCanvas()
 }
 
-
+function onReset() {
+    // const elCanvas = document.querySelector('.canvas-section');
+    // elCanvas.style.display = 'none';
+    // // elCanvas.classList.add('display-none');
+    // const elGallery = document.querySelector('.gallery-container');
+    // elGallery.style.display = 'grid';
+    // // elGallery.classList.add('display-grid');
+    location.reload();
+}
 
 function onSwitchLine(ev) {
     ev.preventDefault();

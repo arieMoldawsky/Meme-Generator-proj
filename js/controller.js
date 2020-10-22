@@ -36,7 +36,7 @@ function onRenderGallery() {
     var elGallery = document.querySelector('.gallery-container');
     var strHtml = '';
     for (var i = 1; i <= 18; i++) {
-        strHtml += `<div class="gallery-item"><img class="${i} img${i}" src="img/${i}.jpg" onclick="onSelectImg(this, event)"></div>`
+        strHtml += `<div class="gallery-item"><img class="${i} img${i}" src="img/${i}.jpg" onclick="onSelectImg(this, event);resizeCanvas()"></div>`
     }
     elGallery.innerHTML = strHtml;
 }

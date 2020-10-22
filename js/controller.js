@@ -60,6 +60,26 @@ function resizeCanvas() {
     }
 }
 
+function onFontSet(font) {
+    const meme = getMeme();
+    const lineIdx = meme.selectedLineIdx;
+    updateFontSet(font);
+    // const x = meme.lines[lineIdx].positionX;
+    // const y = meme.lines[lineIdx].positionY;
+    // onDrawText(lineIdx, x, y);
+    onRenderCanvas();
+}
+
+function onColorSet(color) {
+    const meme = getMeme();
+    const lineIdx = meme.selectedLineIdx;
+    updateColorSet(color);
+    const x = meme.lines[lineIdx].positionX;
+    const y = meme.lines[lineIdx].positionY;
+    onDrawText(lineIdx, x, y);
+    onRenderCanvas();
+}
+
 function onUpDownText(ev, adder) {
     ev.preventDefault();
     const meme = getMeme();
@@ -104,7 +124,7 @@ function onDrawText(lineIdx, x, y) {
     ctx.strokeStyle = 'black';
     ctx.fillStyle = line.color;
     ctx.lineWidth = '2';
-    ctx.font = `${line.size}px Impact`;
+    ctx.font = `${line.size}px ${line.font}`;
     ctx.textAlign = line.align;
     ctx.fillText(line.txt, x, y);
     ctx.strokeText(line.txt, x, y);

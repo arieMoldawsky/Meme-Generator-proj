@@ -9,18 +9,20 @@ var gMeme = {
     lines: [
         {
             txt: '',
-            size: 30,
+            size: 40,
             align: 'center',
             color: 'white',
+            font: 'impact',
             positionX: 210,
             positionY: 50
         },
 
         {
             txt: '',
-            size: 30,
+            size: 40,
             align: 'center',
             color: 'white',
+            font: 'impact',
             positionX: 210,
             positionY: 400
         }]
@@ -33,6 +35,16 @@ var gCtx;
 // function renderText() {
 
 // }
+
+function updateFontSet(font) {
+    const lineIdx = gMeme.selectedLineIdx;
+    gMeme.lines[lineIdx].font = font;
+}
+
+function updateColorSet(color) {
+    const lineIdx = gMeme.selectedLineIdx;
+    gMeme.lines[lineIdx].color = color;
+}
 
 function switchLine() {
     gMeme.selectedLineIdx +=1;

@@ -137,7 +137,7 @@ canvas {
 
 .btns-container form {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
     gap: 20px;
 }
@@ -150,7 +150,6 @@ canvas {
 
 .form-btn {
     border-radius: 10px;
-    background-image: linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
     background-color: #ebeef3;
     box-shadow: 1px 2px 0 #808683, inset 0 5px 0 rgba(255, 255, 255, 0.58);
     height: 50px;
@@ -184,28 +183,39 @@ canvas {
 }
 
 .text-input {
+    resize: none;
     text-align: center;
     padding: 7px 10px;
     border-radius: 28px;
     background-color: #ebeef3;
-    grid-column: 1 / 7;
+    grid-column: 1 / 6;
     grid-row: 1 / 2;
 }
 
 .text-input-btn {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    background-color: #ebd621;
+    text-shadow: -2px 3px 2px rgba(150, 150, 150, 0.7);
+}
+
+.text-delete-btn {
     grid-column: 4 / 5;
     grid-row: 2 / 3;
+    background-color: red;
+    text-shadow: -2px 3px 2px rgba(150, 150, 150, 0.7);
 }
 
 .switch-line-btn {
-    grid-column: 3 / 4;
+    grid-column: 2 / 3;
     grid-row: 2 / 3;
+    background-image: linear-gradient(-38deg, #aaaaaa 0%, #a4a7a7 100%);
 }
 
 .btns-sub-container {
-    background-color: rgb(230, 214, 75);
+    background-color: rgba(230, 214, 75, 0.9);
     border-radius: 10px;
-    grid-column: 1 / 7;
+    grid-column: 1 / 6;
     grid-row: 3 / 5;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -219,28 +229,31 @@ canvas {
 .font-size-up {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    background-image: linear-gradient(-38deg, #e3e614 0%, #d4d135 100%);
+    background-image: linear-gradient(-38deg, #444343 0%, #444343 100%);
 }
 
 .font-size-down {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    background-image: linear-gradient(-38deg, #e62d14 0%, #c93522 100%);
+    background-image: linear-gradient(-38deg, #444343 0%, #444343 100%);
 }
 
 .align-left {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
+    background-image: linear-gradient(-38deg, #444343 0%, #444343 100%);
 }
 
 .align-center {
     grid-column: 4 / 5;
     grid-row: 1 / 2;
+    background-image: linear-gradient(-38deg, #444343 0%, #444343 100%);
 }
 
 .align-right {
     grid-column: 5 / 6;
     grid-row: 1 / 2;
+    background-image: linear-gradient(-38deg, #444343 0%, #444343 100%);
 }
 
 .font-family {
@@ -261,15 +274,29 @@ canvas {
 }
 
 .move-meme-up {
-    grid-column: 3 / 4;
+    grid-column: 2 / 3;
     grid-row: 5 / 6;
-    background-image: linear-gradient(-38deg, #1422e6 0%, #358cd4 100%);
+    background-image: linear-gradient(-38deg, #aaaaaa 0%, #a4a7a7 100%);
 }
 
 .move-meme-down {
     grid-column: 4 / 5;
     grid-row: 5 / 6;
-    background-image: linear-gradient(-38deg, #1422e6 0%, #358cd4 100%);
+    background-image: linear-gradient(-38deg, #aaaaaa 0%, #a4a7a7 100%);
+}
+
+.download-btn {
+    padding: 10px;
+    width: fit-content;
+    grid-column: 1 / 4;
+    grid-row: 6 / 7;
+    /* background-image: linear-gradient(-38deg, #aaaaaa 0%, #a4a7a7 100%); */
+    background-color: red;
+    text-shadow: -2px 3px 2px rgba(150, 150, 150, 0.7);
+}
+
+.download-btn a {
+    color: snow;
 }
 
 .form-btn svg {
@@ -360,8 +387,12 @@ footer {
         padding: 0;
     }
 
+    .btns-container {
+        padding: 10px;
+    }
+
     .btns-sub-container {
-        grid-column: 1 / 7;
+        grid-column: 1 / 6;
         grid-row: 3 / 6;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(3, 1fr);
@@ -379,7 +410,6 @@ footer {
     .font-size-down {
         grid-column: 4 / 5;
         grid-row: 1 / 2;
-        background-image: linear-gradient(-38deg, #e62d14 0%, #c93522 100%);
     }
 
     .align-left {
@@ -450,7 +480,7 @@ footer {
     }
 
     .btns-sub-container {
-        grid-column: 1 / 7;
+        grid-column: 1 / 6;
         grid-row: 3 / 5;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -495,13 +525,18 @@ footer {
     }
 
     .move-meme-up {
-        grid-column: 3 / 4;
+        grid-column: 2 / 3;
         grid-row: 5 / 6;
     }
-
+    
     .move-meme-down {
         grid-column: 4 / 5;
         grid-row: 5 / 6;
+    }
+
+    .download-btn {
+        padding: 10px;
+        width: fit-content;
     }
 
     footer {

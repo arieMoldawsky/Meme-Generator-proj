@@ -55,9 +55,32 @@ function resizeCanvas() {
             lines[0].positionY = 50;
             lines[1].positionX = 175;
             lines[1].positionY = 310;
+            lines[2].positionX = 175;
+            lines[2].positionY = 175;
         }
         onRenderCanvas();
     }
+}
+
+function onDownloadCanvas(elLink) {
+    const canvas = getCanvas();
+    const data = canvas.toDataURL("image/jpg");
+    console.log(data);
+    elLink.href = data;
+    elLink.download = 'myMeme.jpg';
+}
+
+function onAlignTxt(ev, direction) {
+    ev.preventDefault();
+    const meme = getMeme();
+    const lineIdx = meme.selectedLineIdx;
+    var elContainer = document.querySelector('.canvas-container');
+    if (elContainer.offsetWidth < 400) updateTextAlign(direction, 'narrow');
+    else updateTextAlign(direction, 'wide')
+    // const x = meme.lines[lineIdx].positionX;
+    // const y = meme.lines[lineIdx].positionY;
+    // onDrawText(lineIdx, x, y);
+    onRenderCanvas();
 }
 
 function onFontSet(font) {
@@ -103,6 +126,18 @@ function onIncDecFont(ev, adder) {
     onRenderCanvas();
 }
 
+function onDeleteLine(ev) {
+    ev.preventDefault();
+    const meme = getMeme();
+    const lineIdx = meme.selectedLineIdx;
+    const x = meme.lines[lineIdx].positionX;
+    const y = meme.lines[lineIdx].positionY;
+    const text = '';
+    updatTextLine(text);
+    onDrawText(lineIdx, x, y);
+    onRenderCanvas();
+}
+
 function onTextInput(ev) {
     ev.preventDefault();
     const meme = getMeme();
@@ -111,7 +146,10 @@ function onTextInput(ev) {
     const y = meme.lines[lineIdx].positionY;
     let elTxtInput = document.querySelector('.text-input');
     const text = elTxtInput.value;
-    if (!text) alert('Please insert text');
+    if (!text) {
+        alert('Please insert text');
+        return
+    }
     updatTextLine(text);
     onDrawText(lineIdx, x, y);
     onRenderCanvas();

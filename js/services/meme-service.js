@@ -25,6 +25,16 @@ var gMeme = {
             font: 'impact',
             positionX: 210,
             positionY: 400
+        },
+
+        {
+            txt: '',
+            size: 40,
+            align: 'center',
+            color: 'white',
+            font: 'impact',
+            positionX: 210,
+            positionY: 210
         }]
 }
 
@@ -35,6 +45,21 @@ var gCtx;
 // function renderText() {
 
 // }
+
+function updateTextAlign(direction, screenSize) {
+    const lineIdx = gMeme.selectedLineIdx;
+    if (direction === 'left') {
+        gMeme.lines[lineIdx].positionX = 20;
+        gMeme.lines[lineIdx].align = 'left';
+    } else if (direction === 'right') {
+        gMeme.lines[lineIdx].positionX = 320;
+        gMeme.lines[lineIdx].align = 'right';
+    } else {
+        if (screenSize === 'wide') gMeme.lines[lineIdx].positionX = 210;
+        else gMeme.lines[lineIdx].positionX = 175;
+        gMeme.lines[lineIdx].align = 'center';
+    }
+}
 
 function updateFontSet(font) {
     const lineIdx = gMeme.selectedLineIdx;
@@ -47,7 +72,7 @@ function updateColorSet(color) {
 }
 
 function switchLine() {
-    gMeme.selectedLineIdx +=1;
+    gMeme.selectedLineIdx += 1;
     if (gMeme.selectedLineIdx > (gMeme.lines.length - 1)) gMeme.selectedLineIdx = 0;
 }
 
@@ -108,7 +133,7 @@ function _getImg(id) {
 
 function _getImgs() {
     gImgs = [];
-    for (var i= 1; i <= 18; i++) {
+    for (var i = 1; i <= 18; i++) {
         gImgs.push(_getImg(i));
     }
     return gImgs

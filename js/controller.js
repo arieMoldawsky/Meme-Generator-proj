@@ -144,9 +144,6 @@ function onFontSet(font) {
     const meme = getMeme();
     const lineIdx = meme.selectedLineIdx;
     updateFontSet(font);
-    // const x = meme.lines[lineIdx].positionX;
-    // const y = meme.lines[lineIdx].positionY;
-    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 
@@ -154,9 +151,6 @@ function onColorSet(color) {
     const meme = getMeme();
     const lineIdx = meme.selectedLineIdx;
     updateColorSet(color);
-    const x = meme.lines[lineIdx].positionX;
-    const y = meme.lines[lineIdx].positionY;
-    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 
@@ -166,20 +160,15 @@ function onUpDownText(ev, adder) {
     const lineIdx = meme.selectedLineIdx;
     adder = +adder;
     updateTxtLocation(adder);
-    const x = meme.lines[lineIdx].positionX;
-    const y = meme.lines[lineIdx].positionY;
-    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
+
 function onIncDecFont(ev, adder) {
     ev.preventDefault();
     const meme = getMeme();
     const lineIdx = meme.selectedLineIdx;
-    const x = meme.lines[lineIdx].positionX;
-    const y = meme.lines[lineIdx].positionY;
     adder = +adder;
     updateFontSize(adder);
-    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 
@@ -187,11 +176,8 @@ function onDeleteLine(ev) {
     if (ev) ev.preventDefault();
     const meme = getMeme();
     const lineIdx = meme.selectedLineIdx;
-    const x = meme.lines[lineIdx].positionX;
-    const y = meme.lines[lineIdx].positionY;
     const text = '';
     updatTextLine(text);
-    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 

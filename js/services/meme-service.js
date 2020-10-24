@@ -46,7 +46,7 @@ function updateTextAlign(direction, screenSize) {
         gMeme.lines[lineIdx].positionX = 20;
         gMeme.lines[lineIdx].align = 'left';
     } else if (direction === 'right') {
-        gMeme.lines[lineIdx].positionX = 320;
+        gMeme.lines[lineIdx].positionX = 340;
         gMeme.lines[lineIdx].align = 'right';
     } else {
         if (screenSize === 'wide') gMeme.lines[lineIdx].positionX = 210;

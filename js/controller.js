@@ -220,6 +220,8 @@ function drawRect(x, y, sizeX, sizeY) {
     ctx.rect(x, y, sizeX, sizeY);
     ctx.strokeStyle = 'black';
     ctx.stroke();
+    ctx.fillStyle = ' rgba(231, 225, 225, 0.363)';
+    ctx.fill();
 }
 
 function onDrawText(lineIdx, x, y) {
@@ -249,7 +251,7 @@ function onSelectImg(image, ev) {
         elCanvas.style.display = 'grid';
         const elGallery = document.querySelector('.gallery-container')
         elGallery.style.display = 'none';
-        if (window.innerWidth > 501) {
+        if (window.innerWidth > 501 && window.innerHeight > 730) {
             const footer = document.querySelector('footer');
             footer.classList.add('footer-to-bottom');
         }

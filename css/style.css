@@ -124,7 +124,6 @@ button {
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
-
 }
 
 canvas {
@@ -337,21 +336,47 @@ canvas {
 
 /* Img Gallery */
 
-.gallery-container {
+.gallery-section {
     border-radius: 10px;
     background-color: #444343;
     margin-top: 20px;
-    padding: 40px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+    margin-bottom: 50px;
+}
+
+.search-container {
+    padding: 20px;
+}
+
+.search-container input {
+    border-radius: 20px;
+    padding: 6px 8px;
+    background-color: rgb(219, 215, 215);
+    border: 2.5px solid #dadada;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.search-container button {
+    border-radius: 20px;
+    padding: 6px 10px;
+    background-color: rgb(230, 214, 75);
+    color: rgb(53, 53, 53);
+}
+
+.gallery-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
     justify-content: center;
-    /* display: none; */
-
     height: 100%;
-    margin-bottom: 50px;
-    margin-right: auto;
-    margin-left: auto;
+    padding: 20px;
+    /* margin-right: auto;
+    margin-left: auto; */
 }
 
 .gallery-container img {
@@ -584,7 +609,7 @@ footer {
         grid-column: 2 / 3;
         grid-row: 5 / 6;
     }
-    
+
     .move-meme-down {
         grid-column: 4 / 5;
         grid-row: 5 / 6;

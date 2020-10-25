@@ -32,7 +32,8 @@
                 <form action="input" class="btns-form">
                     <!-- <textarea class="text-input" cols='20' rows="3" name="text" id="text"
                         placeholder="Your Text Here.."></textarea> -->
-                    <input oninput="onTextInput(event)" class="text-input" type="text" name="text" id="text" placeholder="Your Text Here.."></input>
+                    <input oninput="onTextInput(event)" class="text-input" type="text" name="text" id="text"
+                        placeholder="Your Text Here.."></input>
                     <button class="text-input-btn form-btn" onclick="onTextInput(event)">Add</button>
                     <button class="text-delete-btn form-btn" onclick="onDeleteLine(event)"><svg
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -110,16 +111,23 @@
                                 fill="snow" /></svg></button>
                     <button class="form-btn download-btn"> <a href="#" onclick="onDownloadCanvas(this)"
                             download="">Download</a></button>
-                        </form>
-                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
-                            <input name="img" id="imgData" type="hidden" />
-                            <button class="form-btn facebook-btn" type="submit">Publish</button>
-                            <div class="share-container"></div>
-                        </form>
+                </form>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
+                    <input name="img" id="imgData" type="hidden" />
+                    <button class="form-btn facebook-btn" type="submit">Publish</button>
+                    <div class="share-container"></div>
+                </form>
             </div>
         </section>
 
-        <div class="gallery-container container">
+        <div class="gallery-section container">
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search" oninput="onSearchKeyword(this.value, event)">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="gallery-container"></div>
         </div>
 
         <footer>

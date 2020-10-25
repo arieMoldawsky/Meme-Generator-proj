@@ -95,6 +95,20 @@ function resizeCanvas() {
     }
 }
 
+function onSearchKeyword(val, ev) {
+    ev.preventDefault();
+    var imgs = getImgsByKeyword(val);
+    if (!imgs[0]) onRenderGallery();
+    else {
+        var elGallery = document.querySelector('.gallery-container');
+        var strHtml = '';
+        imgs.forEach(img => {
+            strHtml += `<div class="gallery-item"><img class="${img.id} img${img.id}" src="img/${img.id}.jpg" onclick="onSelectImg(this, event);resizeCanvas()"></div>`
+        }) 
+        elGallery.innerHTML = strHtml;
+    }
+}
+
 function onUploadImg(elForm, ev) {
     ev.preventDefault();
     const canvas = getCanvas();
@@ -244,7 +258,7 @@ function onSelectImg(image, ev) {
 
         const elCanvas = document.querySelector('.canvas-section');
         elCanvas.style.display = 'grid';
-        const elGallery = document.querySelector('.gallery-container')
+        const elGallery = document.querySelector('.gallery-section')
         elGallery.style.display = 'none';
         if (window.innerWidth > 501 && window.innerHeight > 730) {
             const footer = document.querySelector('footer');

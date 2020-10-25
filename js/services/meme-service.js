@@ -40,6 +40,16 @@ var gMeme = {
         }]
 }
 
+_imgsKeywordsInsert();
+
+function getImgsByKeyword(keyword) {
+    var imgs = [];
+    gImgs.forEach(img => {
+        if (img.keywords.some(word => word === keyword)) imgs.push(img)
+    })
+    return imgs;
+}
+
 function updateTextAlign(direction, screenSize) {
     const lineIdx = gMeme.selectedLineIdx;
     if (direction === 'left') {
@@ -121,11 +131,32 @@ function setCanvas(canvas, ctx) {
     gCtx = ctx;
 }
 
-function _getImg(id) {
+function _imgsKeywordsInsert() {
+    gImgs[0].keywords.push('angry', 'trump', 'man');
+    gImgs[1].keywords.push('dog', 'dogs', 'sweet', 'kiss');
+    gImgs[2].keywords.push('dog', 'baby', 'sleep', 'sweet');
+    gImgs[3].keywords.push('cat', 'sleep', 'computer');
+    gImgs[4].keywords.push('baby', 'win', 'victory');
+    gImgs[5].keywords.push('smile', 'idea', 'man');
+    gImgs[6].keywords.push('baby', 'surprise', 'shock', 'sweet');
+    gImgs[7].keywords.push('smile', 'man', 'dream');
+    gImgs[8].keywords.push('smile', 'baby', 'evil', 'idea');
+    gImgs[9].keywords.push('smile', 'man', 'obama');
+    gImgs[10].keywords.push('kiss', 'man', 'hug');
+    gImgs[11].keywords.push('man', 'you', 'busted');
+    gImgs[12].keywords.push('smile', 'man', 'cheers');
+    gImgs[13].keywords.push('man', 'glasses', 'cool');
+    gImgs[14].keywords.push('man', 'mustache');
+    gImgs[15].keywords.push('smile', 'man', 'laugh');
+    gImgs[16].keywords.push('man', 'putin', 'evil');
+    gImgs[17].keywords.push('man', 'toys');
+}
+
+function _getImg(id, keyword) {
     return {
         id,
         url: `./img/${id}.jpg`,
-        keywords: []
+        keywords: [keyword]
     }
 }
 

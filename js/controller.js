@@ -78,36 +78,41 @@ function onRenderGallery() {
 }
 
 function resizeCanvas() {
+    resizeCanvasHelper();
+    window.addEventListener('resize', function () {
+        resizeCanvasHelper()
+    })
+}
+
+function resizeCanvasHelper() {
     var elContainer = document.querySelector('.canvas-container');
     var canvas = document.querySelector('#my-canvas');
     const meme = getMeme();
     const lines = meme.lines;
-    window.addEventListener('resize', function () {
-        if (elContainer.offsetWidth < 400) {
-            canvas.width = elContainer.offsetWidth;
-            canvas.height = elContainer.offsetHeight;
-            if (lines[0].positionX === 210 && lines[1].positionX === 210) {
-                lines[0].positionX = 175;
-                lines[0].positionY = 50;
-                lines[1].positionX = 175;
-                lines[1].positionY = 310;
-                lines[2].positionX = 175;
-                lines[2].positionY = 175;
-            }
-            onRenderCanvas();
-        } else {
-            canvas.width = 420;
-            canvas.height = 420;
-            if (lines[0].positionX === 175 && lines[1].positionX === 175) {
-                lines[0].positionX = 210;
-                lines[1].positionX = 210;
-                lines[1].positionY = 400;
-                lines[2].positionX = 210;
-                lines[2].positionY = 210;
-            }
-            onRenderCanvas();
+    if (elContainer.offsetWidth < 400) {
+        canvas.width = elContainer.offsetWidth;
+        canvas.height = elContainer.offsetHeight;
+        if (lines[0].positionX === 210 && lines[1].positionX === 210) {
+            lines[0].positionX = 175;
+            lines[0].positionY = 50;
+            lines[1].positionX = 175;
+            lines[1].positionY = 310;
+            lines[2].positionX = 175;
+            lines[2].positionY = 175;
         }
-    })
+        onRenderCanvas();
+    } else {
+        canvas.width = 420;
+        canvas.height = 420;
+        if (lines[0].positionX === 175 && lines[1].positionX === 175) {
+            lines[0].positionX = 210;
+            lines[1].positionX = 210;
+            lines[1].positionY = 400;
+            lines[2].positionX = 210;
+            lines[2].positionY = 210;
+        }
+        onRenderCanvas();
+    }
 }
 
 function onSearchKeyword(val, ev) {

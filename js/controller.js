@@ -11,8 +11,11 @@ function onReset() {
 }
 
 function onSwitchLine(ev) {
+    const meme = getMeme();
     ev.preventDefault();
     switchLine();
+    let elTxtInput = document.querySelector('.text-input');
+    elTxtInput.value = meme.lines[meme.selectedLineIdx].txt;
     onRenderCanvas();
 }
 
@@ -21,8 +24,8 @@ function canvasClicked(ev) {
     const meme = getMeme();
     const lines = meme.lines;
     const { offsetX, offsetY } = ev;
-
     var lineIdx = meme.selectedLineIdx;
+
     ctx.font = `${lines[lineIdx].size}px ${lines[lineIdx].font}`;
     var lineSize = ctx.measureText(`${lines[lineIdx].txt}`);
     let clickedLineIdx;
@@ -37,6 +40,8 @@ function canvasClicked(ev) {
     }
     if (clickedLineIdx !== -1) {
         meme.selectedLineIdx = clickedLineIdx;
+        let elTxtInput = document.querySelector('.text-input');
+        elTxtInput.value = lines[meme.selectedLineIdx].txt;
         onRenderCanvas();
     }
 }
@@ -44,17 +49,20 @@ function canvasClicked(ev) {
 function onRenderCanvas(download) {
     const canvas = document.querySelector('#my-canvas');
     const ctx = canvas.getContext('2d');
-    // ctx.clearRect(0, 0, canvas.width, canvas.height)
+    setCanvas(canvas, ctx);
+    onRenderImg(download);
+}
+
+function onRenderTxt(download) {
+    const ctx = getCtx();
     const meme = getMeme();
     const lines = meme.lines;
-    setCanvas(canvas, ctx);
-    onSelectImg(document.querySelector(`.img${meme.selectedImgId}`), event);
     var lineIdx = meme.selectedLineIdx;
     ctx.font = `${lines[lineIdx].size}px ${lines[lineIdx].font}`;
     var lineSize = ctx.measureText(`${lines[lineIdx].txt}`);
     lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY));
     if (download) return;
-    drawRect(lines[lineIdx].positionX - ((lineSize.width + 20) / 2), lines[lineIdx].positionY - 40, lineSize.width + 20, 50);
+    drawRect(lines[lineIdx].positionX - ((lineSize.width + 20) / 2), lines[lineIdx].positionY - lines[lineIdx].size, lineSize.width + 20, lines[lineIdx].size + 10);
 }
 
 function onRenderGallery() {
@@ -134,9 +142,6 @@ function onAlignTxt(ev, direction) {
     var elContainer = document.querySelector('.canvas-container');
     if (elContainer.offsetWidth < 400) updateTextAlign(direction, 'narrow');
     else updateTextAlign(direction, 'wide')
-    // const x = meme.lines[lineIdx].positionX;
-    // const y = meme.lines[lineIdx].positionY;
-    // onDrawText(lineIdx, x, y);
     onRenderCanvas();
 }
 
@@ -194,9 +199,6 @@ function onTextInput(ev) {
         return
     }
     updatTextLine(text);
-    // onDrawText(lineIdx, x, y);
-    // meme.lines[lineIdx].txt = elTxtInput.value;
-    elTxtInput.value = '';
     onRenderCanvas();
 }
 
@@ -206,7 +208,7 @@ function drawRect(x, y, sizeX, sizeY) {
     ctx.rect(x, y, sizeX, sizeY);
     ctx.strokeStyle = 'black';
     ctx.stroke();
-    ctx.fillStyle = ' rgba(231, 225, 225, 0.363)';
+    ctx.fillStyle = 'rgba(231, 225, 225, 0.363)';
     ctx.fill();
 }
 
@@ -222,16 +224,23 @@ function onDrawText(lineIdx, x, y) {
     ctx.strokeText(line.txt, x, y);
 }
 
+function onRenderImg(download) {
+    const canvas = getCanvas();
+    const meme = getMeme();
+    const ctx = getCtx();
+    var imgId = meme.selectedImgId;
+    var img = new Image();
+    img.src = `./img/${imgId}.jpg`;
+    img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        onRenderTxt(download);
+    }
+}
+
 function onSelectImg(image, ev) {
     if (ev.type === 'click') {
         var imageId = +image.classList[0];
-        var selectedImg = updatSelectedImg(imageId);
-        const canvas = getCanvas();
-        const ctx = getCtx();
-        var imgId = selectedImg.id;
-        var elImg = document.querySelector(`.img${imgId}`)
-
-        ctx.drawImage(elImg, 0, 0, canvas.width, canvas.height)
+        updatSelectedImg(imageId);
 
         const elCanvas = document.querySelector('.canvas-section');
         elCanvas.style.display = 'grid';
@@ -241,5 +250,6 @@ function onSelectImg(image, ev) {
             const footer = document.querySelector('footer');
             footer.classList.add('footer-to-bottom');
         }
+        onRenderCanvas();
     }
 }

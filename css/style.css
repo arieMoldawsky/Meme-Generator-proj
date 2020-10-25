@@ -1,3 +1,6 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+
 /* //General// */
 
 * {
@@ -359,6 +362,16 @@ canvas {
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
+}
+
+.search-container input::-webkit-input-placeholder {
+    font-family: FontAwesome;
+    font-weight: normal;
+    overflow: visible;
+    vertical-align: top;
+    display: inline-block;
+    padding-left: 5px;
+    padding-top: 2px;
 }
 
 .search-container button {

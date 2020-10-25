@@ -2,6 +2,9 @@
 
 
 function onInit() {
+    const canvas = document.querySelector('#my-canvas');
+    const ctx = canvas.getContext('2d');
+    setCanvas(canvas, ctx);
     onRenderGallery()
     onRenderCanvas()
 }
@@ -47,8 +50,8 @@ function canvasClicked(ev) {
 }
 
 function onRenderCanvas(download) {
-    const canvas = document.querySelector('#my-canvas');
-    const ctx = canvas.getContext('2d');
+    const canvas = getCanvas();
+    const ctx = getCtx();
     setCanvas(canvas, ctx);
     onRenderImg(download);
 }
@@ -61,7 +64,7 @@ function onRenderTxt(download) {
     ctx.font = `${lines[lineIdx].size}px ${lines[lineIdx].font}`;
     var lineSize = ctx.measureText(`${lines[lineIdx].txt}`);
     lines.forEach((line, idx) => onDrawText(idx, line.positionX, line.positionY));
-    if (download) return;
+    if (download === 'yes') return;
     drawRect(lines[lineIdx].positionX - ((lineSize.width + 20) / 2), lines[lineIdx].positionY - lines[lineIdx].size, lineSize.width + 20, lines[lineIdx].size + 10);
 }
 
@@ -78,21 +81,33 @@ function resizeCanvas() {
     var elContainer = document.querySelector('.canvas-container');
     var canvas = document.querySelector('#my-canvas');
     const meme = getMeme();
-    if (elContainer.offsetWidth < 400) {
-        canvas.width = elContainer.offsetWidth;
-        canvas.height = elContainer.offsetHeight;
-        const meme = getMeme();
-        const lines = meme.lines;
-        if (lines[0].positionX === 210 && lines[1].positionX === 210) {
-            lines[0].positionX = 175;
-            lines[0].positionY = 50;
-            lines[1].positionX = 175;
-            lines[1].positionY = 310;
-            lines[2].positionX = 175;
-            lines[2].positionY = 175;
+    const lines = meme.lines;
+    window.addEventListener('resize', function () {
+        if (elContainer.offsetWidth < 400) {
+            canvas.width = elContainer.offsetWidth;
+            canvas.height = elContainer.offsetHeight;
+            if (lines[0].positionX === 210 && lines[1].positionX === 210) {
+                lines[0].positionX = 175;
+                lines[0].positionY = 50;
+                lines[1].positionX = 175;
+                lines[1].positionY = 310;
+                lines[2].positionX = 175;
+                lines[2].positionY = 175;
+            }
+            onRenderCanvas();
+        } else {
+            canvas.width = 420;
+            canvas.height = 420;
+            if (lines[0].positionX === 175 && lines[1].positionX === 175) {
+                lines[0].positionX = 210;
+                lines[1].positionX = 210;
+                lines[1].positionY = 400;
+                lines[2].positionX = 210;
+                lines[2].positionY = 210;
+            }
+            onRenderCanvas();
         }
-        onRenderCanvas();
-    }
+    })
 }
 
 function onSearchKeyword(val, ev) {
@@ -104,7 +119,7 @@ function onSearchKeyword(val, ev) {
         var strHtml = '';
         imgs.forEach(img => {
             strHtml += `<div class="gallery-item"><img class="${img.id} img${img.id}" src="img/${img.id}.jpg" onclick="onSelectImg(this, event);resizeCanvas()"></div>`
-        }) 
+        })
         elGallery.innerHTML = strHtml;
     }
 }
@@ -140,13 +155,16 @@ function doUploadImg(elForm, onSuccess) {
 }
 
 function onDownloadCanvas(elLink) {
-    var download = 'yes';
-    onRenderCanvas(download);
-    const canvas = getCanvas();
-    const data = canvas.toDataURL("image/jpg");
-    console.log(data);
-    elLink.href = data;
-    elLink.download = 'myMeme.jpg';
+    onRenderCanvas('yes');
+    setTimeout(() => {
+        const canvas = getCanvas();
+        const data = canvas.toDataURL("image/jpg");
+        const elTempLink = document.createElement('a');
+        elTempLink.href = data;
+        elTempLink.hidden = true;
+        elTempLink.download = 'myMeme.jpg';
+        elTempLink.click();
+    }, 100)
 }
 
 function onAlignTxt(ev, direction) {

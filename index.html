@@ -34,7 +34,8 @@
                         placeholder="Your Text Here.."></textarea> -->
                     <input oninput="onTextInput(event)" class="text-input" type="text" name="text" id="text"
                         placeholder="Your Text Here.."></input>
-                    <button class="text-input-btn form-btn" onclick="onTextInput(event)">Add</button>
+                    <button class="text-input-btn form-btn" onclick="onSwitchLine(event)">Add</button>
+                    <!-- <button class="text-input-btn form-btn" onclick="onTextInput(event)">Add</button> -->
                     <button class="text-delete-btn form-btn" onclick="onDeleteLine(event)"><svg
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
@@ -109,8 +110,7 @@
                             <path
                                 d="M466.22 205.787L263.553 3.12c-4.16-4.16-10.923-4.16-15.083 0L45.804 205.787C24 227.6 24 263.067 45.804 284.87s57.28 21.803 79.083 0l77.78-77.78v251.584c0 29.397 23.936 53.333 53.333 53.333s53.333-23.936 53.333-53.333V207.088l77.78 77.78c21.803 21.803 57.28 21.803 79.083 0 21.803-21.78 21.803-57.28.022-79.082z"
                                 fill="snow" /></svg></button>
-                    <button class="form-btn download-btn"> <a href="#" onclick="onDownloadCanvas(this)"
-                            download="">Download</a></button>
+                    <button class="form-btn download-btn"> <a href="#" onclick="onDownloadCanvas(this)">Download</a></button>
                 </form>
                 <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
                     <input name="img" id="imgData" type="hidden" />
@@ -122,10 +122,8 @@
 
         <div class="gallery-section container">
             <div class="search-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search.." name="search" oninput="onSearchKeyword(this.value, event)">
-                    <button type="submit">Submit</button>
-                </form>
+                <input type="text" placeholder="Search...                             &#61442;" name="search" oninput="onSearchKeyword(this.value, event)">
+                <!-- <div class="keywords-suggestions"></div> -->
             </div>
             <div class="gallery-container"></div>
         </div>
